@@ -1,0 +1,11 @@
+#!/bin/bash
+
+pushd $(dirname $(dirname $(realpath "${BASH_SOURCE[0]}"))) > /dev/null
+
+set -e
+
+
+haxelib dev aseprite-lua .
+
+
+popd > /dev/null

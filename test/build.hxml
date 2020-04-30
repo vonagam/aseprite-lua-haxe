@@ -1,0 +1,5 @@
+--class-path sources
+# --main
+--lua build.lua
+--library aseprite-lua
+--dce full

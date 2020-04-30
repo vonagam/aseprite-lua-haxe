@@ -1,0 +1,13 @@
+#!/bin/bash
+
+pushd $(dirname $(dirname $(realpath "${BASH_SOURCE[0]}"))) > /dev/null
+
+set -e
+
+
+source ./scripts/env.sh
+
+"$ASEPRITE_BIN" -b --script ./build.lua
+
+
+popd > /dev/null

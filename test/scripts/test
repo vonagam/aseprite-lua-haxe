@@ -1,0 +1,41 @@
+#!/bin/bash
+
+pushd $(dirname $(dirname $(realpath "${BASH_SOURCE[0]}"))) > /dev/null
+
+set -e
+
+
+count=$(grep --count '^--main ' ./build.hxml || true)
+
+if [[ $count != 0 ]]; then
+
+  ./scripts/build
+
+  ./scripts/run
+
+else
+
+  filter="$*"
+
+  for script in sources/Try*.hx; do
+
+    if [[ "$filter" != "" ]]; then
+
+      [[ $script =~ $filter ]] || continue
+
+    fi
+
+    name=$(basename $script .hx)
+
+    echo $name
+
+    ./scripts/build --main $name
+
+    ./scripts/run
+
+  done
+
+fi
+
+
+popd > /dev/null

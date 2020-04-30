@@ -1,0 +1,11 @@
+{
+  "name": "aseprite-lua",
+  "description": "Aseprite scripting externs",
+  "version": "0.0.1",
+  "releasenote": "Initial release",
+  "url": "https://github.com/vonagam/aseprite-lua-hx",
+  "license": "MIT",
+  "contributors": [ "vonagam" ],
+  "tags": [ "lua", "defold", "aseprite" ],
+  "classPath": "sources"
+}

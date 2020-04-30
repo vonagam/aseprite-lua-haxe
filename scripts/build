@@ -1,0 +1,13 @@
+#!/bin/bash
+
+pushd $(dirname $(dirname $(realpath "${BASH_SOURCE[0]}"))) > /dev/null
+
+set -e
+
+
+./build/scripts/build
+
+./scripts/copy
+
+
+popd > /dev/null

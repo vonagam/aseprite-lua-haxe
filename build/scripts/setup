@@ -1,0 +1,38 @@
+#!/bin/bash
+
+pushd $(dirname $(dirname $(realpath "${BASH_SOURCE[0]}"))) > /dev/null
+
+set -e
+
+
+setup () {
+
+  rm -rf $1
+
+  mkdir -p $1
+
+  pushd $1 > /dev/null
+
+  git init
+
+  git remote add origin $2
+
+  git fetch --depth 1 origin $3
+
+  git checkout FETCH_HEAD
+
+  popd > /dev/null
+
+}
+
+
+setup ./inputs/aseprite git@github.com:aseprite/aseprite.git v1.2.18 > /dev/null
+
+setup ./inputs/aseprite-api git@github.com:aseprite/api.git 6eff7064264bdf2b61ac8a7ff76a25034177f220 > /dev/null
+
+setup ./inputs/aseprite-tests git@github.com:aseprite/tests.git 52a3fe55aeac872d97a8c7a7f49441251393d167 > /dev/null
+
+setup ./inputs/aseprite-examples git@github.com:aseprite/Aseprite-Script-Examples.git 33a10652ec8bc553e25600cd0a620f50f7b655d9 > /dev/null
+
+
+popd > /dev/null

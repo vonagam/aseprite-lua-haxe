@@ -1,0 +1,23 @@
+#!/bin/bash
+
+pushd $(dirname $(dirname $(realpath "${BASH_SOURCE[0]}"))) > /dev/null
+
+set -e
+
+
+rm -rf ./haxelib
+
+./scripts/build
+
+mkdir -p ./haxelib
+
+cp -r ./sources ./haxelib/sources
+
+cp ./extraParams.hxml ./haxelib.json ./README.md ./haxelib
+
+zip -q -X -r haxelib.zip ./haxelib
+
+mv haxelib.zip ./haxelib/haxelib.zip
+
+
+popd > /dev/null

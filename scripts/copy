@@ -1,0 +1,13 @@
+#!/bin/bash
+
+pushd $(dirname $(dirname $(realpath "${BASH_SOURCE[0]}"))) > /dev/null
+
+set -e
+
+
+cp -r ./build/outputs/ ./sources/aseprite/
+
+sed -i '' '\|^[[:space:]]*//|d' ./sources/aseprite/*.hx
+
+
+popd > /dev/null

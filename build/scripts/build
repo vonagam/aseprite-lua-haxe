@@ -1,0 +1,15 @@
+#!/bin/bash
+
+pushd $(dirname $(dirname $(realpath "${BASH_SOURCE[0]}"))) > /dev/null
+
+set -e
+
+
+rm -rf ./outputs
+
+mkdir -p ./outputs
+
+haxe build.hxml
+
+
+popd > /dev/null
