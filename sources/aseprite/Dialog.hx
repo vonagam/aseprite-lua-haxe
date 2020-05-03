@@ -7,7 +7,7 @@ typedef DialogTextWidgetOptions = DialogWidgetOptions & { ?text: String };
 
 typedef DialogButtonWidgetOptions = DialogTextWidgetOptions & { ?onclick: () -> Void, ?selected: Boolean };
 
-/*
+/**
   The dialog class can be used to show input controls/widgets in the
   screen to get some data from the user.
   
@@ -39,10 +39,10 @@ typedef DialogButtonWidgetOptions = DialogTextWidgetOptions & { ?onclick: () -> 
     app.alert("The given value is '" .. data.user_value .. "'")
   end
   ```
-*/
+**/
 @:native( "_G.Dialog" ) extern class Dialog {
 
-  /*
+  /**
     ```lua
     local dlg = Dialog()
     local data = dlg.data
@@ -63,10 +63,10 @@ typedef DialogButtonWidgetOptions = DialogTextWidgetOptions & { ?onclick: () -> 
       selected item.
     * [color](https://github.com/aseprite/api/blob/master/api/dialog.md#dialogcolor): A [Color](https://github.com/aseprite/api/blob/master/api/color.md#color).
     * [shades](https://github.com/aseprite/api/blob/master/api/dialog.md#dialogshades): A table with an array of [Color](https://github.com/aseprite/api/blob/master/api/color.md#color)s when `mode="sort"`
-  */
+  **/
   var data: Any;
   
-  /*
+  /**
     ```lua
     local dlg = Dialog()
     local bounds = dlg.bounds
@@ -76,10 +76,10 @@ typedef DialogButtonWidgetOptions = DialogTextWidgetOptions & { ?onclick: () -> 
     Gets or sets the position and size (a [rectangle](https://github.com/aseprite/api/blob/master/api/rectangle.md#rectangle)) of
     the dialog. This might be useful to align several dialog that must be
     shown in the same *xy*-position.
-  */
+  **/
   var bounds: Rectangle;
   
-  /*
+  /**
     ```lua
     local dlg = Dialog()
     local dlg = Dialog(string)
@@ -93,10 +93,10 @@ typedef DialogButtonWidgetOptions = DialogTextWidgetOptions & { ?onclick: () -> 
     bar of the dialog. The constructor that receives a table can receive a
     special callback function (`onclose`) that is called when the dialog
     is closed.
-  */
+  **/
   @:selfCall function new( options: EitherType2< String, { ?title: String, ?onclose: () -> Void } > );
   
-  /*
+  /**
     ```lua
     local dlg = Dialog()
     dlg:show()
@@ -119,10 +119,10 @@ typedef DialogButtonWidgetOptions = DialogTextWidgetOptions & { ?onclick: () -> 
     With `{ bounds=Rectangle() }` you can display the dialog in a specific
     location. Useful to show the dialog in a previous position that you
     obtain from [Dialog.bounds](https://github.com/aseprite/api/blob/master/api/dialog.md#dialogbounds) property.
-  */
+  **/
   function show( ?options: { ?wait: Bool, ?bounds: RectangleInput } ): Void;
   
-  /*
+  /**
     ```lua
     local dlg = Dialog()
     dlg:button{ text="Close",
@@ -136,10 +136,10 @@ typedef DialogButtonWidgetOptions = DialogTextWidgetOptions & { ?onclick: () -> 
     default buttons without an `onclick` event handler will close the
     dialog, but if you specify a `onclick` function, you have to call this
     function to close the dialog.
-  */
+  **/
   function close(): Void;
   
-  /*
+  /**
     ```lua
     local dlg = Dialog()
     dlg:newrow()
@@ -152,20 +152,20 @@ typedef DialogButtonWidgetOptions = DialogTextWidgetOptions & { ?onclick: () -> 
     
     Using the `newrow{ always }` is a way to avoid joining widgets of the
     same type (it's like calling `newrow()` after new widget is added).
-  */
+  **/
   function newrow( ?options: { ?always: Bool } ): Void;
   
-  /*
+  /**
     ```lua
     local dlg = Dialog()
     dlg:separator{ id=string,
                    label=string,
                    text=string }
     ```
-  */
+  **/
   function separator( ?options: EitherType2< String, { ?text: String } > ): Void;
   
-  /*
+  /**
     ```lua
     local dlg = Dialog()
     dlg:label{ id=string,
@@ -180,10 +180,10 @@ typedef DialogButtonWidgetOptions = DialogTextWidgetOptions & { ?onclick: () -> 
     * `text`: Text to be used in the right side.
     
     Creates a static label.
-  */
+  **/
   function label( options: DialogTextWidgetOptions ): Void;
   
-  /*
+  /**
     ```lua
     local dlg = Dialog()
     dlg:button{ id=string,
@@ -205,10 +205,10 @@ typedef DialogButtonWidgetOptions = DialogTextWidgetOptions & { ?onclick: () -> 
     * `selected`: True in case that you want to show the button checked by default.
     * `focus`: Focus this button by default or when the Enter key is pressed in an [text entry](https://github.com/aseprite/api/blob/master/api/dialog.md#dialogentry) field.
     * `onclick`: Function to be called when the button is pressed.
-  */
+  **/
   function button( options: DialogButtonWidgetOptions ): Void;
   
-  /*
+  /**
     ```lua
     local dlg = Dialog()
     dlg:check{ id=string,
@@ -219,10 +219,10 @@ typedef DialogButtonWidgetOptions = DialogTextWidgetOptions & { ?onclick: () -> 
     ```
     
     Creates a check box. Arguments are the same as in [Dialog:button](https://github.com/aseprite/api/blob/master/api/dialog.md#dialogbutton).
-  */
+  **/
   function check( options: DialogButtonWidgetOptions ): Void;
   
-  /*
+  /**
     ```lua
     local dlg = Dialog()
     dlg:radio{ id=string,
@@ -233,10 +233,10 @@ typedef DialogButtonWidgetOptions = DialogTextWidgetOptions & { ?onclick: () -> 
     ```
     
     Creates a radio button. Arguments are the same as in [Dialog:button](https://github.com/aseprite/api/blob/master/api/dialog.md#dialogbutton).
-  */
+  **/
   function radio( options: DialogButtonWidgetOptions ): Void;
   
-  /*
+  /**
     ```lua
     local dlg = Dialog()
     dlg:entry{ id=string,
@@ -246,10 +246,10 @@ typedef DialogButtonWidgetOptions = DialogTextWidgetOptions & { ?onclick: () -> 
     ```
     
     Creates a text entry.
-  */
+  **/
   function entry( options: DialogTextWidgetOptions ): Void;
   
-  /*
+  /**
     ```lua
     local dlg = Dialog()
     dlg:number{ id=string,
@@ -259,10 +259,10 @@ typedef DialogButtonWidgetOptions = DialogTextWidgetOptions & { ?onclick: () -> 
     ```
     
     Creates an entry field to input a number.
-  */
+  **/
   function number( options: DialogTextWidgetOptions & { ?decimals: Int } ): Void;
   
-  /*
+  /**
     ```lua
     local dlg = Dialog()
     dlg:slider{ id=string,
@@ -273,10 +273,10 @@ typedef DialogButtonWidgetOptions = DialogTextWidgetOptions & { ?onclick: () -> 
     ```
     
     Creates a slider in the dialog.
-  */
+  **/
   function slider( options: DialogWidgetOptions & { ?min: Int, ?max: Int, ?value: Int } ): Void;
   
-  /*
+  /**
     ```lua
     local dlg = Dialog()
     dlg:combobox{ id=string,
@@ -286,10 +286,10 @@ typedef DialogButtonWidgetOptions = DialogTextWidgetOptions & { ?onclick: () -> 
     ```
     
     Creates a combo box/drop-down list.
-  */
+  **/
   function combobox( options: DialogWidgetOptions & { options: LuaArray< String >, ?option: String } ): Void;
   
-  /*
+  /**
     ```lua
     local dlg = Dialog()
     dlg:color{ id=string,
@@ -298,10 +298,10 @@ typedef DialogButtonWidgetOptions = DialogTextWidgetOptions & { ?onclick: () -> 
     ```
     
     Creates a button to select a [color](https://github.com/aseprite/api/blob/master/api/color.md#color).
-  */
+  **/
   function color( options: DialogWidgetOptions & { ?color: Color, ?onchange: ( { ?color: Color } ) -> Void } ): Void;
   
-  /*
+  /**
     ```lua
     local dlg = Dialog()
     dlg:shades{ id=string,
@@ -335,10 +335,10 @@ typedef DialogButtonWidgetOptions = DialogTextWidgetOptions & { ?onclick: () -> 
       end
     }
     ```
-  */
+  **/
   function shades( options: DialogWidgetOptions & { colors: LuaArray< Color >, ?mode: String, ?onclick: ( { button: MouseButton, ?color: Color } ) -> Void } ): Void;
   
-  /*
+  /**
     ```lua
     local dlg = Dialog()
     dlg:file{ id=string,
@@ -365,10 +365,10 @@ typedef DialogButtonWidgetOptions = DialogTextWidgetOptions & { ?onclick: () -> 
     * `entry`: Show an entry field to edit the filename manually (false by default).
     * `focus`: Focus this field by default.
     * `onchange`: Function to be called when the filename is changed.
-  */
+  **/
   function file( options: DialogWidgetOptions & { ?filename: String, ?save: Bool, ?title: String, ?entry: Bool, ?filetypes: LuaArray< String >, ?onchange: () -> Void } ): Void;
   
-  /*
+  /**
     ```lua
     local dlg = Dialog()
     dlg:modify{ id=string,
@@ -378,7 +378,7 @@ typedef DialogButtonWidgetOptions = DialogTextWidgetOptions & { ?onclick: () -> 
     ```
     
     Changes properties of the given widget that matches the identifier `id`.
-  */
+  **/
   function modify( options: { ?id: String, ?enabled: Bool, ?selected: Bool, ?visible: Bool, ?text: String, ?label: String, ?focus: Bool } ): Void;
 
 }

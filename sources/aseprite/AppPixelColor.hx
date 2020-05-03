@@ -1,7 +1,7 @@
 package aseprite;
 
 
-/*
+/**
   This [`app`](https://github.com/aseprite/api/blob/master/api/app.md#app) property contains a set of function to handle the color
   for [Image pixels](https://github.com/aseprite/api/blob/master/api/image.md#imagepixels) at the lowest level: an unsigned integer.
   
@@ -21,10 +21,10 @@ package aseprite;
   [Image:getPixel()](https://github.com/aseprite/api/blob/master/api/image.md#imagegetpixel),
   [Image:putPixel()](https://github.com/aseprite/api/blob/master/api/image.md#imageputpixel), or
   [Image:pixels()](https://github.com/aseprite/api/blob/master/api/image.md#imagepixels).
-*/
+**/
 extern class AppPixelColor {
 
-  /*
+  /**
     ```lua
     local rgbaPixelValue = app.pixelColor.rgba(red, green, blue, [, alpha])
     ```
@@ -39,10 +39,10 @@ extern class AppPixelColor {
     local redPixel = pc.rgba(255, 0, 0)
     local semiTransparentWhite = pc.rgba(255, 255, 255, 128)
     ```
-  */
+  **/
   @:luaDotMethod function rgba( r: IntInput, g: IntInput, b: IntInput, ?a: IntInput ): PixelColor;
   
-  /*
+  /**
     ```lua
     local redComponent = app.pixelColor.rgbaR(rgbaPixelValue)
     ```
@@ -64,25 +64,25 @@ extern class AppPixelColor {
     -- redComponent is 255
     -- greenComponent is 128
     ```
-  */
+  **/
   @:luaDotMethod function rgbaR( color: PixelColor ): Int;
   
-  /*
+  /**
     Same as [rgbaR()](https://github.com/aseprite/api/blob/master/api/pixelcolor.md#apppixelcolorrgbar) but with the Green component.
-  */
+  **/
   @:luaDotMethod function rgbaG( color: PixelColor ): Int;
   
-  /*
+  /**
     Same as [rgbaR()](https://github.com/aseprite/api/blob/master/api/pixelcolor.md#apppixelcolorrgbar) but with the Blue component.
-  */
+  **/
   @:luaDotMethod function rgbaB( color: PixelColor ): Int;
   
-  /*
+  /**
     Same as [rgbaR()](https://github.com/aseprite/api/blob/master/api/pixelcolor.md#apppixelcolorrgbar) but with the Alpha component.
-  */
+  **/
   @:luaDotMethod function rgbaA( color: PixelColor ): Int;
   
-  /*
+  /**
     ```lua
     local grayPixelValue = app.pixelColor.graya(gray [, alpha])
     ```
@@ -98,10 +98,10 @@ extern class AppPixelColor {
     local white = pc.graya(255)
     local semiTransparentWhite = pc.graya(255, 128)
     ```
-  */
+  **/
   @:luaDotMethod function graya( v: IntInput, ?a: IntInput ): PixelColor;
   
-  /*
+  /**
     ```lua
     local grayValue = app.pixelColor.grayaV(grayPixelValue)
     ```
@@ -120,12 +120,12 @@ extern class AppPixelColor {
     -- grayComponent is 128
     -- alphaComponent is 32
     ```
-  */
+  **/
   @:luaDotMethod function grayaV( color: PixelColor ): Int;
   
-  /*
+  /**
     Same as [grayaV()](https://github.com/aseprite/api/blob/master/api/pixelcolor.md#apppixelcolorgrayav) but with the Alpha component.
-  */
+  **/
   @:luaDotMethod function grayaA( color: PixelColor ): Int;
 
 }

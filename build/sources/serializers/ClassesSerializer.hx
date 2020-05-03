@@ -29,7 +29,7 @@ class ClassesSerializer extends Serializer {
 
   function doOverload( args: Array< { name: String, type: String } >, type: String ) {
 
-    return '@:overload( function${ doMethodArgs( args) }${ doType( type ) } {})';
+    return '@:overload( function${ doMethodArgs( args) }${ doType( type ) } {} )';
 
   }
 

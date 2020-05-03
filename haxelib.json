@@ -1,9 +1,9 @@
 {
   "name": "aseprite-lua",
   "description": "Aseprite scripting externs",
-  "version": "0.0.1",
-  "releasenote": "Initial release",
-  "url": "https://github.com/vonagam/aseprite-lua-hx",
+  "version": "0.0.2",
+  "releasenote": "Fix javadoc comments",
+  "url": "https://github.com/vonagam/aseprite-lua-haxe",
   "license": "MIT",
   "contributors": [ "vonagam" ],
   "tags": [ "lua", "defold", "aseprite" ],

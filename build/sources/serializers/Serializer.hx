@@ -99,7 +99,7 @@ class Serializer {
 
   function doMarkdown( id: String ) {
 
-    return markdowns.exists( id ) && markdowns[ id ] != '' ? '/*\n${ doIndent( markdowns[ id ] ) }\n*/\n' : '';
+    return markdowns.exists( id ) && markdowns[ id ] != '' ? '/**\n${ doIndent( markdowns[ id ] ) }\n**/\n' : '';
 
   }
 

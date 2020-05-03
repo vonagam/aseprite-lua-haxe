@@ -1,14 +1,14 @@
 package aseprite;
 
 
-/*
+/**
   A set of function to handle file names and the file system.
   
   # Path & File Name Manipulation
-*/
+**/
 extern class AppFS {
 
-  /*
+  /**
     ```lua
     local fn = "path" .. app.fs.pathSeparator .. "filename.png"
     ```
@@ -26,61 +26,61 @@ extern class AppFS {
     ```
     
     Will print `path/filename.png` on macOS or Linux, and `path\filename.png` on Windows.
-  */
+  **/
   var pathSeparator( default, null ): String;
   
-  /*
+  /**
     Returns the path the Aseprite executable was launched from.
-  */
+  **/
   var currentPath( default, null ): String;
   
-  /*
+  /**
     Returns the installation path of Aseprite for the current platform.
-  */
+  **/
   var appPath( default, null ): String;
   
-  /*
+  /**
     Returns the path for temporary files for the current platform.
     
     On macOS or Linux it will be `/tmp`, and Windows it will look like `C:\Users\username\AppData\Local\Temp\`.
-  */
+  **/
   var tempPath( default, null ): String;
   
-  /*
+  /**
     Returns the current user's Documents path for the current platform.
     
     Depending on the platform, this may return the user's home directory.
-  */
+  **/
   var userDocsPath( default, null ): String;
   
-  /*
+  /**
     Returns the current user's Aseprite configuration path for the current platform.
     
     You can learn about the specific location of this folder [from the Aseprite documentation](https://www.aseprite.org/docs/preferences-folder/).
     
     # File System Access
-  */
+  **/
   var userConfigPath( default, null ): String;
   
-  /*
+  /**
     ```lua
     local pathPart = app.fs.filePath(fn)
     ```
     
     Returns the path/directory part (as a string) of the given filename `fn`.
-  */
+  **/
   @:luaDotMethod function filePath( path: String ): String;
   
-  /*
+  /**
     ```lua
     local fileName = app.fs.fileName(fn)
     ```
     
     Returns the file name (including the extension parth) of the given filename `fn`.
-  */
+  **/
   @:luaDotMethod function fileName( path: String ): String;
   
-  /*
+  /**
     ```lua
     local extension = app.fs.fileExtension(fn)
     ```
@@ -93,10 +93,10 @@ extern class AppFS {
     ```
     
     Prints `png`.
-  */
+  **/
   @:luaDotMethod function fileExtension( path: String ): String;
   
-  /*
+  /**
     ```lua
     local title = app.fs.fileTitle(fn)
     ```
@@ -109,10 +109,10 @@ extern class AppFS {
     ```
     
     Prints `file`.
-  */
+  **/
   @:luaDotMethod function fileTitle( path: String ): String;
   
-  /*
+  /**
     ```lua
     local title = app.fs.filePathAndTitle(fn)
     ```
@@ -125,10 +125,10 @@ extern class AppFS {
     ```
     
     Prints `path/file`.
-  */
+  **/
   @:luaDotMethod function filePathAndTitle( path: String ): String;
   
-  /*
+  /**
     Returns the file path converted to a canonical form for the current platform.
     
     Example:
@@ -138,10 +138,10 @@ extern class AppFS {
     ```
     
     Will print as `/home/user/path` on macOS or Linux, and `C:\home\user\path` on Windows.
-  */
+  **/
   @:luaDotMethod function normalizePath( path: String ): String;
   
-  /*
+  /**
     Can accept any number of string arguments to join together with the path separator for the current platform.
     
     ```lua
@@ -151,37 +151,37 @@ extern class AppFS {
     Returns `path1/path2` on macOS or Linux, and `path1\path2` on Windows.
     
     # Special Folders
-  */
+  **/
   @:luaDotMethod function joinPath( paths: haxe.extern.Rest< String > ): String;
   
-  /*
+  /**
     ```lua
     local exists = app.fs.isFile(fn)
     ```
     
     Returns true if the given filename `fn` is a file.
-  */
+  **/
   @:luaDotMethod function isFile( path: String ): Bool;
   
-  /*
+  /**
     ```lua
     local exists = app.fs.isDirectory(fn)
     ```
     
     Returns true if the given filename `fn` is a directory.
-  */
+  **/
   @:luaDotMethod function isDirectory( path: String ): Bool;
   
-  /*
+  /**
     ```lua
     local size = app.fs.fileSize(fn)
     ```
     
     Returns the file size of the given filename `fn`.
-  */
+  **/
   @:luaDotMethod function fileSize( path: String ): Int;
   
-  /*
+  /**
     ```lua
     local table = app.fs.listFiles(path)
     ```
@@ -199,7 +199,7 @@ extern class AppFS {
       ...
     end
     ```
-  */
+  **/
   @:luaDotMethod function listFiles( path: String ): LuaArray< String >;
 
 }

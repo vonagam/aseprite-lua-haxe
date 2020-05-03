@@ -1,7 +1,7 @@
 package aseprite;
 
 
-/*
+/**
   Represents a version number and provides an easy way to compare if the
   [`app.version`](https://github.com/aseprite/api/blob/master/api/app.md#appversion) is greater or equal than a specific
   expected version. Example:
@@ -11,16 +11,16 @@ package aseprite;
     ...
   end
   ```
-*/
+**/
 @:forward extern abstract Version( VersionData ) {
 
-  /*
+  /**
     ```lua
     local v = Version("1.2.10")
     ```
     
     You can create a new version from a string. Then access each field
-  */
+  **/
   inline function new( ?version: EitherType2< Version, String > ) {
     this = new VersionData( version );
   }
@@ -45,7 +45,7 @@ package aseprite;
 
 @:native( "_G.Version" ) extern class VersionData {
 
-  /*
+  /**
     ```lua
     local v = Version("1.2.9")
     assert(v.major == 1)
@@ -55,10 +55,10 @@ package aseprite;
     ```
     
     Returns the first number of the version.
-  */
+  **/
   var major( default, null ): Int;
   
-  /*
+  /**
     ```lua
     local v = Version("1.2.9")
     assert(v.minor == 2)
@@ -68,10 +68,10 @@ package aseprite;
     ```
     
     Returns the second number of the version.
-  */
+  **/
   var minor( default, null ): Int;
   
-  /*
+  /**
     ```lua
     local v = Version("1.2.9")
     assert(v.patch == 9)
@@ -81,10 +81,10 @@ package aseprite;
     ```
     
     Returns the third number of the version.
-  */
+  **/
   var patch( default, null ): Int;
   
-  /*
+  /**
     ```lua
     local v = Version("1.2.10-beta4")
     assert(v.prereleaseLabel == "beta")
@@ -95,10 +95,10 @@ package aseprite;
     
     Returns the pre-release label/keyword. For official releases it's an
     empty string, in other cases it might be `"alpha"`, `"beta"`, `"dev"`, etc.
-  */
+  **/
   var prereleaseLabel( default, null ): String;
   
-  /*
+  /**
     ```lua
     local v = Version("1.2.10-beta4")
     assert(v.prereleaseNumber == 4)
@@ -108,16 +108,16 @@ package aseprite;
     ```
     
     Returns the pre-release version.
-  */
+  **/
   var prereleaseNumber( default, null ): Int;
   
-  /*
+  /**
     ```lua
     local v = Version("1.2.10")
     ```
     
     You can create a new version from a string. Then access each field
-  */
+  **/
   @:selfCall function new( ?version: EitherType2< Version, String > );
 
 }

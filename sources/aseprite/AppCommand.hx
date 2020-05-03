@@ -1,7 +1,7 @@
 package aseprite;
 
 
-/*
+/**
   ```lua
   app.command.CommandName()
   app.command.CommandName { param1=value1, param2=value2, ... }
@@ -192,7 +192,7 @@ package aseprite;
      ```lua
      app.command.CommandName { ["parameter-name"]="value", ["other-parameter-name"]="otherValue" }
      ```
-*/
+**/
 @:forward extern abstract AppCommand( AppCommandData ) {
 
   @:op( [] ) private inline function __index( name: String ): Command< Any > {
@@ -225,7 +225,7 @@ extern class AppCommandData {
   
   var Stroke( default, null ): Command< {} >;
   
-  /*
+  /**
     ```lua
     app.command.SpriteSize {
       ui=true,
@@ -283,7 +283,7 @@ extern class AppCommandData {
     ```
     
     This issue will be fixed soon.
-  */
+  **/
   var SpriteSize( default, null ): Command< { ?ui: Bool, ?width: Int, ?height: Int, ?lockRatio: Bool, ?scale: Float, ?scaleX: Float, ?scaleY: Float, ?method: ResizeMethod } >;
   
   var SpriteProperties( default, null ): Command< {} >;
@@ -318,7 +318,7 @@ extern class AppCommandData {
   
   var SetLoopSection( default, null ): Command< {} >;
   
-  /*
+  /**
     ```lua
     app.command.SetInkType {
       type="simple"
@@ -328,7 +328,7 @@ extern class AppCommandData {
     * `type`: ink type set up, `"simple"` by default. Others possibles configurations: `"alpha-compositing"`, `"copy-color"`, `"lock-alpha"` and `"shading"`.
     
     More info on ink type behavior at [https://www.aseprite.org/docs/ink/](https://www.aseprite.org/docs/ink/)
-  */
+  **/
   var SetInkType( default, null ): Command< {} >;
   
   var SetColorSelector( default, null ): Command< {} >;
@@ -361,7 +361,7 @@ extern class AppCommandData {
   
   var ReselectMask( default, null ): Command< {} >;
   
-  /*
+  /**
     ```lua
     app.command.ReplaceColor {
       ui=true,
@@ -391,7 +391,7 @@ extern class AppCommandData {
     * `to`: [Color](https://github.com/aseprite/api/blob/master/api/../color.md#color) to replace (it's the [background color](https://github.com/aseprite/api/blob/master/api/../app.md#appbgcolor) by default)
     * `tolerance`: Maximum allowed difference between `from` and the pixel
       in the image to apply the replacement.
-  */
+  **/
   var ReplaceColor( default, null ): Command< { ?ui: Bool, ?channels: Int, ?from: Color, ?to: Color, ?tolerance: Int } >;
   
   var RepeatLastExport( default, null ): Command< {} >;
@@ -424,7 +424,7 @@ extern class AppCommandData {
   
   var PaletteEditor( default, null ): Command< {} >;
   
-  /*
+  /**
     ```lua
     app.command.Outline {
       ui=true,
@@ -456,7 +456,7 @@ extern class AppCommandData {
     * `tiledMode`: `'none'`, `'x'`, `'y'`, `'both'`. By default it's
       `'none'` if there is no UI, or it's equal to `app.preferences.document(app.activeSprite).tiled.mode`
       when `ui` is `true`.
-  */
+  **/
   var Outline( default, null ): Command< { ?ui: Bool, ?channels: Int, ?place: OutlineFilterPlace, ?matrix: OutlineFilterMatrix, ?color: Color, ?bgColor: Color, ?tiledMode: TiledMode } >;
   
   var Options( default, null ): Command< {} >;
@@ -481,7 +481,7 @@ extern class AppCommandData {
   
   var NewFrame( default, null ): Command< {} >;
   
-  /*
+  /**
     ```lua
     app.command.NewFile {
       ui=true,
@@ -497,12 +497,12 @@ extern class AppCommandData {
     * `height`
     * `colorMode` ([ColorMode](https://github.com/aseprite/api/blob/master/api/../colormode.md#colormode))
     * `fromClipboard`
-  */
+  **/
   var NewFile( default, null ): Command< { ?ui: Bool, ?width: Int, ?height: Int, ?colorMode: ColorMode, ?fromClipboard: Bool } >;
   
   var NewBrush( default, null ): Command< {} >;
   
-  /*
+  /**
     Moves the selection boundaries or its content (pixels).
     
     ```lua
@@ -539,10 +539,10 @@ extern class AppCommandData {
       * `'viewport-height'`
     * `quantity`: the number of `pixel`s, or `tile-width`s, etc. to move
       the selection to the given `direction` depending on the `units`
-  */
+  **/
   var MoveMask( default, null ): Command< {} >;
   
-  /*
+  /**
     ```lua
     app.command.MoveColors {
       before=colorIndex
@@ -552,7 +552,7 @@ extern class AppCommandData {
     Moves the range selected colors
     [`app.range.colors`](https://github.com/aseprite/api/blob/master/api/../range.md#rangecolors) before the given
     `colorIndex`.
-  */
+  **/
   var MoveColors( default, null ): Command< { ?before: Int } >;
   
   var MoveCel( default, null ): Command< {} >;
@@ -589,7 +589,7 @@ extern class AppCommandData {
   
   var InvertMask( default, null ): Command< {} >;
   
-  /*
+  /**
     ```lua
     app.command.InvertColor {
       ui=true,
@@ -607,12 +607,12 @@ extern class AppCommandData {
       [FilterChannels.GREEN](https://github.com/aseprite/api/blob/master/api/../filterchannels.md#filterchannelsgreen) |
       [FilterChannels.BLUE](https://github.com/aseprite/api/blob/master/api/../filterchannels.md#filterchannelsblue) |
       [FilterChannels.GRAY](https://github.com/aseprite/api/blob/master/api/../filterchannels.md#filterchannelsgray).
-  */
+  **/
   var InvertColor( default, null ): Command< { ?ui: Bool, ?channels: Int } >;
   
   var ImportSpriteSheet( default, null ): Command< {} >;
   
-  /*
+  /**
     ```lua
     app.command.HueSaturation {
       ui=true,
@@ -640,7 +640,7 @@ extern class AppCommandData {
     * `saturation`: From `-100` to `100`
     * `lightness` (or `value`): From `-100` to `100`
     * `alpha`: From `-100` to `100`
-  */
+  **/
   var HueSaturation( default, null ): Command< { ?ui: Bool, ?channels: Int, ?mode: HueSaturationFilterMode, ?hue: Float, ?saturation: Float, ?lightness: Float, ?alpha: Float } >;
   
   var Home( default, null ): Command< {} >;
@@ -689,7 +689,7 @@ extern class AppCommandData {
   
   var Eyedropper( default, null ): Command< {} >;
   
-  /*
+  /**
     ```lua
     app.command.ExportSpriteSheet {
       ui=true,
@@ -743,7 +743,7 @@ extern class AppCommandData {
     * `listLayers`
     * `listTags`
     * `listSlices`
-  */
+  **/
   var ExportSpriteSheet( default, null ): Command< { ?ui: Bool, ?askOverwrite: Bool, ?type: SpriteSheetType, ?columns: Int, ?rows: Int, ?width: Int, ?height: Int, ?textureFilename: String, ?dataFilename: String, ?dataFormat: SpriteSheetDataFormat, ?filenameFormat: String, ?borderPadding: Int, ?shapePadding: Int, ?innerPadding: Int, ?trimSprite: Bool, ?trim: Bool, ?trimByGrid: Bool, ?extrude: Bool, ?ignoreEmpty: Bool, ?mergeDuplicates: Bool, ?openGenerated: Bool, ?layer: String, ?tag: String, ?splitLayers: Bool, ?splitTags: Bool, ?listLayers: Bool, ?listTags: Bool, ?listSlices: Bool } >;
   
   var Exit( default, null ): Command< {} >;
@@ -758,7 +758,7 @@ extern class AppCommandData {
   
   var DeveloperConsole( default, null ): Command< {} >;
   
-  /*
+  /**
     ```lua
     app.command.Despeckle {
       ui=true,
@@ -782,7 +782,7 @@ extern class AppCommandData {
     * `tiledMode`: `'none'`, `'x'`, `'y'`, `'both'`. By default it's
       `'none'` if there is no UI, or it's equal to `app.preferences.document(app.activeSprite).tiled.mode`
       when `ui` is `true`.
-  */
+  **/
   var Despeckle( default, null ): Command< { ?ui: Bool, ?channels: Int, ?width: Int, ?height: Int, ?tiledMode: TiledMode } >;
   
   var DeselectMask( default, null ): Command< {} >;
@@ -793,7 +793,7 @@ extern class AppCommandData {
   
   var CopyMerged( default, null ): Command< {} >;
   
-  /*
+  /**
     ```lua
     app.command.CopyColors {
       before=colorIndex
@@ -803,14 +803,14 @@ extern class AppCommandData {
     Copies the range selected colors
     [`app.range.colors`](https://github.com/aseprite/api/blob/master/api/../range.md#rangecolors) before the given
     `colorIndex`.
-  */
+  **/
   var CopyColors( default, null ): Command< {} >;
   
   var CopyCel( default, null ): Command< {} >;
   
   var Copy( default, null ): Command< {} >;
   
-  /*
+  /**
     ```lua
     app.command.ConvolutionMatrix {
       ui=true,
@@ -837,14 +837,14 @@ extern class AppCommandData {
     
     *Note*: In future versions this function should support creating
     customized convolution matrices.
-  */
+  **/
   var ConvolutionMatrix( default, null ): Command< { ?ui: Bool, ?channels: Int, ?tiledMode: TiledMode, ?fromResource: String } >;
   
   var ContiguousFill( default, null ): Command< {} >;
   
   var ColorQuantization( default, null ): Command< { ?ui: Bool, ?withAlpha: Bool, ?maxColors: Int, ?useRange: Bool } >;
   
-  /*
+  /**
     ```lua
     app.command.ColorCurve {
       ui=true,
@@ -865,7 +865,7 @@ extern class AppCommandData {
       [FilterChannels.GRAY](https://github.com/aseprite/api/blob/master/api/../filterchannels.md#filterchannelsgray).
     * `curve`: Array of [points](https://github.com/aseprite/api/blob/master/api/../point.md#point) where X is the input
       value and Y the output value.
-  */
+  **/
   var ColorCurve( default, null ): Command< { ?ui: Bool, ?channels: Int, ?curve: Array< PointInput > } >;
   
   var CloseFile( default, null ): Command< {} >;
@@ -892,7 +892,7 @@ extern class AppCommandData {
   
   var Cancel( default, null ): Command< {} >;
   
-  /*
+  /**
     ```lua
     app.command.BrightnessContrast {
       ui=true,
@@ -914,7 +914,7 @@ extern class AppCommandData {
       [FilterChannels.GRAY](https://github.com/aseprite/api/blob/master/api/../filterchannels.md#filterchannelsgray).
     * `brightness`: Brightness factor (`0` by default), a value between `-100` and `100`.
     * `contrast`: Contrast factor (`0` by default), a value between `-100` and `100`.
-  */
+  **/
   var BrightnessContrast( default, null ): Command< { ?ui: Bool, ?channels: Int, ?brightness: Float, ?contrast: Float } >;
   
   var BackgroundFromLayer( default, null ): Command< {} >;
@@ -923,7 +923,7 @@ extern class AppCommandData {
   
   var AdvancedMode( default, null ): Command< {} >;
   
-  /*
+  /**
     ```lua
     app.command.AddColor {
       source=string,
@@ -935,7 +935,7 @@ extern class AppCommandData {
     
     * `source`: Can be `"fg"`, `"bg"`, or `"color"` (default). To add the foreground, background, or a specific color respectively.
     * `color`: A [Color](https://github.com/aseprite/api/blob/master/api/../color.md#color) instance to add too the palette.
-  */
+  **/
   var AddColor( default, null ): Command< { ?source: AddColorSource, ?color: Color } >;
   
   var About( default, null ): Command< {} >;

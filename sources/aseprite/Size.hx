@@ -1,7 +1,7 @@
 package aseprite;
 
 
-/*
+/**
   If a function receives a size as an argument it could be several things:
   
   1. You can specify two parameters `width, height` directly as
@@ -13,10 +13,10 @@ package aseprite;
      E.g. `sprite:resize{ 64, 32 }`
   1. You can specify a `Size` instance:
      E.g. `sprite:resize(Size(64, 32))`
-*/
+**/
 @:forward extern abstract Size( SizeData ) {
 
-  /*
+  /**
     ```lua
     Size()
     Size(otherSize)
@@ -27,7 +27,7 @@ package aseprite;
     
     Creates a new `Size` instance with the given dimensions (or
     `width=height=0` if they are not specified).
-  */
+  **/
   inline function new( options: SizeInput ) {
     this = new SizeData( options );
   }
@@ -64,23 +64,23 @@ package aseprite;
 
 @:native( "_G.Size" ) extern class SizeData {
 
-  /*
+  /**
     ```lua
     local width = size.width
     size.width = newWidth
     ```
-  */
+  **/
   var width: Int;
   
-  /*
+  /**
     ```lua
     local height = size.height
     size.height = newHeight
     ```
-  */
+  **/
   var height: Int;
   
-  /*
+  /**
     ```lua
     Size()
     Size(otherSize)
@@ -91,7 +91,7 @@ package aseprite;
     
     Creates a new `Size` instance with the given dimensions (or
     `width=height=0` if they are not specified).
-  */
+  **/
   @:selfCall function new( options: SizeInput );
 
 }

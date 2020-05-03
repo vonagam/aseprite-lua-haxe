@@ -7,13 +7,13 @@ import lua.PairTools;
 
 @:forward abstract LuaArray< T >( Table< Int, T > ) from Table< Int, T > to Table< Int, T > {
 
-  @:from private static inline function fromArray< T >( array: Array< T > ): LuaArray< T > {
+  @:from static inline function fromArray< T >( array: Array< T > ): LuaArray< T > {
 
     return Table.fromArray( array );
 
   }
 
-  @:to private function toArray(): Array< T > {
+  @:to function toArray(): Array< T > {
 
     final array = new Array< T >();
 

@@ -3,7 +3,7 @@ package aseprite;
 
 @:forward extern abstract Palette( PaletteData ) {
 
-  /*
+  /**
     ```lua
     local palette = Palette()
     local palette = Palette(numberOfColors)
@@ -26,7 +26,7 @@ package aseprite;
     [`DB16`](https://github.com/aseprite/aseprite/blob/8e193b592ae06abb36be6f72ef43c308b511b24c/data/extensions/dawnbringer-palettes/package.json#L13),
     [`DB32`](https://github.com/aseprite/aseprite/blob/8e193b592ae06abb36be6f72ef43c308b511b24c/data/extensions/dawnbringer-palettes/package.json#L14),
     [`Solarized`](https://github.com/aseprite/aseprite/blob/8e193b592ae06abb36be6f72ef43c308b511b24c/data/extensions/software-palettes/package.json#L15)).
-  */
+  **/
   inline function new( options: EitherType4< Palette, Int, { fromFile: String }, { fromResource: String } > ) {
     this = new PaletteData( options );
   }
@@ -41,17 +41,17 @@ package aseprite;
 
 @:native( "_G.Palette" ) extern class PaletteData {
 
-  /*
+  /**
     At the moment it always return the first [frame](https://github.com/aseprite/api/blob/master/api/frame.md#frame), but in a
     near future Aseprite will support palette changes over time (in
     different frames), so this field should be the frame number where this
     palette is displayed for first time in the [sprite](https://github.com/aseprite/api/blob/master/api/sprite.md#sprite).
-  */
+  **/
   var frame( default, null ): Frame;
   
   var frameNumber( default, null ): LuaIndex;
   
-  /*
+  /**
     ```lua
     local palette = Palette()
     local palette = Palette(numberOfColors)
@@ -74,45 +74,45 @@ package aseprite;
     [`DB16`](https://github.com/aseprite/aseprite/blob/8e193b592ae06abb36be6f72ef43c308b511b24c/data/extensions/dawnbringer-palettes/package.json#L13),
     [`DB32`](https://github.com/aseprite/aseprite/blob/8e193b592ae06abb36be6f72ef43c308b511b24c/data/extensions/dawnbringer-palettes/package.json#L14),
     [`Solarized`](https://github.com/aseprite/aseprite/blob/8e193b592ae06abb36be6f72ef43c308b511b24c/data/extensions/software-palettes/package.json#L15)).
-  */
+  **/
   @:selfCall function new( options: EitherType4< Palette, Int, { fromFile: String }, { fromResource: String } > );
   
-  /*
+  /**
     ```lua
     palette:resize(ncolors)
     ```
     
     Changes the number of the palette colors to `ncolors` (an integer
     value).
-  */
+  **/
   function resize( size: Int ): Void;
   
-  /*
+  /**
     ```lua
     local color = palette:getColor(index)
     ```
     
     Returns the [`color`](https://github.com/aseprite/api/blob/master/api/color.md#color) in the given entry `index` (the `index` goes from `0` to `#palette-1`).
-  */
+  **/
   function getColor( index: Int ): Color;
   
-  /*
+  /**
     ```lua
     palette:setColor(index, color)
     ```
     
     Changes a palette color in the given entry `index` (the `index` goes from `0` to `#palette-1`).
     The `color` can be a [`Color`](https://github.com/aseprite/api/blob/master/api/color.md#color) object or an [integer pixel value](https://github.com/aseprite/api/blob/master/api/pixelcolor.md#apppixelcolor).
-  */
+  **/
   function setColor( index: Int, color: AnyColorInput ): Void;
   
-  /*
+  /**
     ```lua
     palette:saveAs(filename)
     ```
     
     Saves the palette in the given `filename`.
-  */
+  **/
   function saveAs( filename: String ): Void;
 
 }
